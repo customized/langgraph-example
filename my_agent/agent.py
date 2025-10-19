@@ -17,9 +17,6 @@ workflow = StateGraph(AgentState, config_schema=GraphConfig)
 workflow.add_node("agent", call_model)
 workflow.add_node("action", tool_node)
 
-#new addition
-#workflow.add_node("agent2", call_model)
-
 # Set the entrypoint as `agent`
 # This means that this node is the first one called
 workflow.set_entry_point("agent")
@@ -48,8 +45,7 @@ workflow.add_conditional_edges(
 # We now add a normal edge from `tools` to `agent`.
 # This means that after `tools` is called, `agent` node is called next.
 workflow.add_edge("action", "agent")
-#new addition
-#workflow.add_edge("agent", "agent2")
+
 
 
 # Finally, we compile it!
